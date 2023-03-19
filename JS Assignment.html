@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        //Qustion one
+        function isAnagram(str1, str2) {
+    // First, remove any non-word characters and convert to lowercase
+    Str1 = str1.replace(/\W/g, '').toLowerCase();
+    Str2 = str2.replace(/\W/g, '').toLowerCase();
+
+    // If the strings are different lengths, they can’t be anagrams
+    If (str1.length !== str2.length); {
+        return false;
+    }
+
+    // Convert both strings to arrays of characters, sort them, and join back into strings
+    const sortedStr1 = str1.split('').sort().join('');
+    const sortedStr2 = str2.split('').sort().join('');
+
+    // Compare the sorted strings – if they’re equal, they’re anagrams
+    return sortedStr1 === sortedStr2;
+    }
+    const str1 = "listen";
+    const str2 = "silent";
+
+    Console.log(isAnagram(str1, str2)); // true
+
+//===========================================================================//
+    //Qustion two
+
+    function sliceArray(arr, startIndex, endIndex) {
+    return arr.slice(startIndex, endIndex + 1);
+    }
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const startIndex = 2;
+    const endIndex = 5;
+
+    const slicedArr = sliceArray(arr, startIndex, endIndex);
+
+    Console.log(slicedArr); // [3, 4, 5, 6]
+
+//===========================================================================//
+    //Qustion three
+    
+    function splitStringIntoWords(str) {
+  // First, remove any non-word characters and convert to lowercase
+  Str = str.replace(/\W/g, '').toLowerCase();
+
+  // Split the string by whitespace to get an array of words
+  const wordsArr = str.split(/\s+/);
+
+  return wordsArr;
+}
+const str = "The quick brown fox jumps over the lazy dog.";
+
+const wordsArr = splitStringIntoWords(str);
+
+Console.log(wordsArr); // [“the”, “quick”, “brown”, “fox”, “jumps”, “over”, “the”, “lazy”, “dog”]
+
+//===========================================================================//
+    //Qustion four
+
+    function calculateAge(dateOfBirth) {
+  const today = new Date();
+  const birthDate = new Date(dateOfBirth);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+
+  return age;
+}
+const dateOfBirth = "1990-05-15";
+
+const age = calculateAge(dateOfBirth);
+
+console.log(age); // 32 (as of 2023-03-19)
+
+
+//===========================================================================//
+    //Qustion five
+
+    function isValidEmail(email) {
+  // Basic email validation regular expression
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  return emailRegex.test(email);
+}
+const email1 = "user@example.com";
+const email2 = "invalid email";
+const email3 = "user@example";
+
+console.log(isValidEmail(email1)); // true
+console.log(isValidEmail(email2)); // false
+console.log(isValidEmail(email3)); // false
+
+
+
+//===========================================================================//
+    //Qustion six
+
+    function replaceAll(str, substr, replacement) {
+  return str.split(substr).join(replacement);
+}
+const str = "The quick brown fox jumps over the lazy dog";
+const substr = "fox";
+const replacement = "cat";
+
+const result = replaceAll(str, substr, replacement);
+
+console.log(result); // "The quick brown cat jumps over the lazy dog"
+
+
+//===========================================================================//
+    //Qustion seven
+
+    function findSecondSmallest(arr) {
+  // Check that the input array has at least 2 elements
+  If (arr.length < 2) {
+    return null;
+  }
+
+  // Initialize the smallest and second smallest values
+  let smallest = Infinity;
+  let secondSmallest = Infinity;
+
+  // Iterate over the array, updating the smallest and second smallest values
+  for (let I = 0; I < arr.length; i++) {
+    const num = arr[i];
+
+    if (num < smallest) {
+      // Update both smallest and second smallest
+      secondSmallest = smallest;
+      smallest = num;
+    } else if (num < secondSmallest && num !== smallest) {
+      // Update only second smallest
+      secondSmallest = num;
+    }
+  }
+
+  return secondSmallest !== Infinity ? secondSmallest : null;
+}
+const arr = [3, 5, 2, 8, 1, 9, 4];
+const result = findSecondSmallest(arr);
+
+Console.log(result); // 2
+
+
+//===========================================================================//
+    //Qustion eight
+
+    function arrayDifference(arr1, arr2) {
+  // Create a new array to store the difference
+  const difference = [];
+
+  // Iterate over the first array, adding elements to the difference array
+  // if they are not found in the second array
+  for (let I = 0; I < arr1.length; i++) {
+    const elem = arr1[i];
+
+    if (!arr2.includes(elem)) {
+      Difference.push(elem);
+    }
+  }
+
+  return difference;
+}
+const arr1 = [1, 2, 3, 4, 5];
+const arr2 = [2, 4, 6, 8];
+const result = arrayDifference(arr1, arr2);
+
+Console.log(result); // [1, 3, 5]
+
+//===========================================================================//
+    //Qustion nine
+
+    function formatDuration(duration) {
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = duration % 60;
+
+  let result = "";
+  if (hours > 0) {
+    Result += `${hours} hour${hours > 1 ? 's' : ''}, `;
+  }
+  if (minutes > 0) {
+    Result += `${minutes} minute${minutes > 1 ? 's' : ''}, `;
+  }
+  if (seconds > 0 || duration === 0) {
+    Result += `${seconds} second${seconds > 1 ? 's' : ''}`;
+  }
+  return result.trim();
+}
+Console.log(formatDuration(3661)); // “1 hour, 1 minute, 1 second”
+Console.log(formatDuration(60)); // “1 minute”
+Console.log(formatDuration(0)); // “0 seconds”
+
+//===========================================================================//
+    //Qustion ten
+
+    function toCamelCase(str) {
+  // Split the string into an array of words
+  const words = str.split(/[-_]/);
+  
+  // Capitalize all words except the first one
+  for (let I = 1; I < words.length; i++) {
+    Words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+  }
+
+  // Join the words back into a string
+  return words.join('');
+}
+Console.log(toCamelCase("hello-world")); // “helloWorld”
+Console.log(toCamelCase("foo_bar_baz")); // “fooBarBaz”
+Console.log(toCamelCase("some text here")); // “someTextHere”
+
+
+
+
+    </script>
+</body>
+</html>
